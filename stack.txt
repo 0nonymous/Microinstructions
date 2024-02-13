@@ -1,0 +1,8 @@
+  lda $12
+  pha  
+  lda $01
+  pha  
+  lda $02
+  pha  
+  lda @ffff
+  end  
