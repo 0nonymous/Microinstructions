@@ -46,8 +46,8 @@ loopp:
   phx  
   pha  
   jsr @print
-  pla  
   plx  
+  txa  
   sub $05
   bne @loopp
   beq @donne

@@ -1,0 +1,5 @@
+  jsr @ff00
+  jmp @0000
+  org @ff00
+  rsr  
+  end  

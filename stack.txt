@@ -4,5 +4,7 @@
   pha  
   lda $02
   pha  
-  lda @ffff
+  plx  
+  plx  
+  plx  
   end  

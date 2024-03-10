@@ -7,4 +7,4 @@ DEBUG: pause: True
 DEBUG: repl: python
 DEBUG: args: ['C:\\Users\\arjun\\OneDrive\\Documents\\Microinstructions\\assembler_3.py']
 INFO: return code: 0 (0x0)
-INFO: elapsed time: 0.100067
+INFO: elapsed time: 0.080035
