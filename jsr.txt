@@ -1,5 +1,4 @@
-  jsr @ff00
-  jmp @0000
-  org @ff00
-  rsr  
+  lda $05
+  sub $05
+  beq @0000
   end  

@@ -1,4 +1,4 @@
-; print "hello"
+; print "Arjun"
 ; for loop 0, 5
 ; functions: initalize screen
 ; functions: shift data
@@ -47,7 +47,8 @@ loopp:
   pha  
   jsr @print
   pla  
-  plx  
+  pla  
+  tax  
   sub $05
   bne @loopp
   beq @donne

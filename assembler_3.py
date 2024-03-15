@@ -73,7 +73,7 @@ definitions = {}
 labels = {}
 
 # label scan
-path = "jsr.txt"
+path = "lcd.txt"
 source = open(path, 'r')
 min_address = 0
 max_address = 2048
@@ -137,6 +137,7 @@ while True:
             write_index += 1
             space += 1
         elif mnemonic in instructions:
+            print(write_index)
             machine_code[write_index] = hex(instructions[mnemonic])
             write_index += 1
             space += 1
