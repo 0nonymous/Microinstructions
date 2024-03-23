@@ -1,0 +1,77 @@
+; print fibonacci sequence
+; addresses: fef3 ddra, fef2 ddrb
+; addresses: fef1 ra, fef0 rb
+
+; set ports to output
+  lda $ff
+  sta @fef2
+  sta @fef3
+
+; initalize
+  lda $38
+  sta @fef1
+  lda $02
+  sta @fef0
+  lda $00
+  sta @fef0
+
+; set parameters
+  lda $0f
+  sta @fef1
+  lda $02
+  sta @fef0
+  lda $00
+  sta @fef0
+
+; increment lcd
+  lda $06 ;26
+  sta @fef1
+  lda $02
+  sta @fef0
+  lda $00
+  sta @fef0
+
+; row 2
+  lda $c0 ;26
+  sta @fef1
+  lda $02
+  sta @fef0
+  lda $00
+  sta @fef0
+
+; create iterator
+  ldx $00
+
+; main loop
+loopp:
+  txa  
+  add $30
+  inx  
+  phx  
+  pha  
+  jsr @print
+  pla  
+  lda $2c
+  pha  
+  jsr @print
+  pla  
+  pla  
+  tax  
+  sub $0a
+  beq @donne
+  bne @loopp
+
+donne:
+  jmp @donne
+
+; character printing subroutine
+print:
+  ldx $03
+  xla  
+  sta @fef1
+  lda $03
+  sta @fef0
+  lda $00
+  sta @fef0
+  rsr  
+  end  

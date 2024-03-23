@@ -73,7 +73,7 @@ definitions = {}
 labels = {}
 
 # label scan
-path = "lcd.txt"
+path = "fibonacci.txt"
 source = open(path, 'r')
 min_address = 0
 max_address = 2048
