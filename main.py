@@ -14,7 +14,7 @@ fetch = ["PC INC", "PC OUT", "IR SET", "OE"]
 for a in range(0, 6):
   f = open(files[a], "w")
   f.write("[")
-  for x in range(0, 63):
+  for x in range(0, 70):
     for y in range(0, 8):
       f.write("0b")
       for z in range(0, 8):

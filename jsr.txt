@@ -1,4 +1,5 @@
-  lda $05
-  sub $05
-  beq @0000
+; initialize computer port a
+loopp:
+  lda $0f
+  sta @fef2
   end  

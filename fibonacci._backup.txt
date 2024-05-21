@@ -38,31 +38,15 @@
   ldx $00
   stx @0800  
 
-; create variable one - 0 is already in x register (2 bytes)
+; create variable one - 0 is already in x register
   stx @0801
-  stx @0802
 
-; create variable two - (2 bytes)
-  stx @0804
+; create variable two
   ldx $01
-  stx @0803
+  stx @0802
 
 ; main loop
 loopp:
-  lda @0802
-  sub $00
-  beq @byte1
-
-; second byte
-; put variable one onto the stack to pass as an arguement for the print function
-; also add 0x30 for proper character
-  add $30
-  pha  
-  jsr @print
-  pla 
-
-byte1:
-; first byte
 ; put variable one onto the stack to pass as an arguement for the print function
   lda @0801
 ; also add 0x30 for proper character
@@ -78,57 +62,22 @@ byte1:
   pla  
 
 ; add the numbers for the fibonacci sequence
-; byte 1
   lda @0801
-  add @0803
+  add @0802
 
-  ldx @0803
+; shift the fibonacci sequence
+  ldx @0802
   stx @0801
 
-; check if it overflowed
-  tax  
-  sub $0a
-  bpl @carry
-  bmi @no_carry
-
-carry:
-  tax  
-
-no_carry:
-  stx @0803
-
-; byte 2
-  lda @0802
-  adc @0804
-
-  ldx @0804
-  stx @0802
-
-  sta @0804
+; store the next value from a register into fibonacci
+  sta @0802
 
 ; increment the iterator for the for loop
   ldx @0800
   inx  
   stx @0800
   txa  
-
-; check if it should go to the second row
-  sub $05
-  beq @rrow2
-  bne @nextt
-rrow2:
-  ; row 2
-  lda $c0 ;26
-  sta @fef1
-  lda $02
-  sta @fef0
-  lda $00
-  sta @fef0
-
-; check if it is done with the loop
-nextt:
-  txa  
-  sub $0a
+  sub $07
   beq @donne
   bne @loopp
 

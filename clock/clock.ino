@@ -1,5 +1,5 @@
-const int CLOCK_PIN = 13;
-const int DELAY_TIME = 5;
+const int CLOCK_PIN = 8;
+const int DELAY_TIME = 1;
 String received_char;
 
 void setup() {
@@ -15,6 +15,5 @@ void loop() {
       delay(DELAY_TIME);
       digitalWrite(CLOCK_PIN, LOW);
       delay(DELAY_TIME);
-      Serial.println("n");
 
 }

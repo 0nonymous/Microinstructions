@@ -49,19 +49,6 @@
 
 ; main loop
 loopp:
-  lda @0802
-  sub $00
-  beq @byte1
-
-; second byte
-; put variable one onto the stack to pass as an arguement for the print function
-; also add 0x30 for proper character
-  add $30
-  pha  
-  jsr @print
-  pla 
-
-byte1:
 ; first byte
 ; put variable one onto the stack to pass as an arguement for the print function
   lda @0801
@@ -71,6 +58,23 @@ byte1:
   jsr @print
   pla  
 
+; second byte
+; check if the second byte is not zero
+  lda @0802
+  sub $00
+  bne @if_not_zero
+  beq @skipp
+
+if_not_zero:
+; put variable one onto the stack to pass as an arguement for the print function
+  lda @0802
+; also add 0x30 for proper character
+  add $30
+  pha  
+  jsr @print
+  pla 
+
+skipp:
 ; put the ascii for comma onto the stack for the print function
   lda $2c
   pha  
@@ -81,13 +85,10 @@ byte1:
 ; byte 1
   lda @0801
   add @0803
-
-  ldx @0803
-  stx @0801
-
-; check if it overflowed
   tax  
-  sub $0a
+
+; check if it is greater than 9
+  sub $10
   bpl @carry
   bmi @no_carry
 
@@ -95,40 +96,20 @@ carry:
   tax  
 
 no_carry:
-  stx @0803
-
 ; byte 2
   lda @0802
   adc @0804
 
-  ldx @0804
-  stx @0802
-
-  sta @0804
+; shift the fibonacci sequence
+  sta @0802
+  stx @0801
 
 ; increment the iterator for the for loop
   ldx @0800
   inx  
   stx @0800
   txa  
-
-; check if it should go to the second row
-  sub $05
-  beq @rrow2
-  bne @nextt
-rrow2:
-  ; row 2
-  lda $c0 ;26
-  sta @fef1
-  lda $02
-  sta @fef0
-  lda $00
-  sta @fef0
-
-; check if it is done with the loop
-nextt:
-  txa  
-  sub $0a
+  sub $08
   beq @donne
   bne @loopp
 

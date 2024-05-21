@@ -65,7 +65,11 @@ instructions = {
     'bmi @': 0x3e,
     'bpl @': 0x3f,
     'bcs @': 0x40,
-    'bcc @': 0x41
+    'bcc @': 0x41,
+    'ila  ': 0x42,
+    'ilx  ': 0x43,
+    'isa  ': 0x44,
+    'isx  ': 0x45,
 }
 
 # dictionaries
@@ -73,7 +77,7 @@ definitions = {}
 labels = {}
 
 # label scan
-path = "fibonacci.txt"
+path = "keypad.txt"
 source = open(path, 'r')
 min_address = 0
 max_address = 2048
@@ -81,6 +85,7 @@ index = 0
 
 while True:
     line = source.readline()
+    print(line)
     if line == "\n":
         pass
     elif line[0] == ";":

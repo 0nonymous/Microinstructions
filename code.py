@@ -594,40 +594,40 @@ code = [
     [],
     []
   ],
-  [  # 
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+  [  # ILA INDIRECT STACK + X OFFSET 66
+    ["SP INC"],
+    ["MARH SET", "SP OUT", "OE", "X OFF"],
+    ["SP INC"],
+    ["MARL SET", "SP OUT", "OE", "X OFF"],
+    ["SP DEC", "MAR OUT", "OE", "A SET"],
+    ["SP DEC"],
     []
   ],
-  [  # 
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+  [  # ILX INDIRECT STACK + X OFFSET 67
+    ["SP INC"],
+    ["MARH SET", "SP OUT", "OE", "X OFF"],
+    ["SP INC"],
+    ["MARL SET", "SP OUT", "OE", "X OFF"],
+    ["SP DEC", "MAR OUT", "OE", "X SET"],
+    ["SP DEC"],
     []
   ],
-  [  # 
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+  [  # ISA INDIRECT STACK + X OFFSET 68
+    ["SP INC"],
+    ["MARH SET", "SP OUT", "OE", "X OFF"],
+    ["SP INC"],
+    ["MARL SET", "SP OUT", "OE", "X OFF"],
+    ["SP DEC", "MAR OUT", "WE", "A OUT"],
+    ["SP DEC"],
     []
   ],
-  [  # 
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+  [  # ISX INDIRECT STACK + X OFFSET 69
+    ["SP INC"],
+    ["MARH SET", "SP OUT", "OE", "X OFF"],
+    ["SP INC"],
+    ["MARL SET", "SP OUT", "OE", "X OFF"],
+    ["SP DEC", "MAR OUT", "WE", "X OUT"],
+    ["SP DEC"],
     []
   ],
   [  # 
